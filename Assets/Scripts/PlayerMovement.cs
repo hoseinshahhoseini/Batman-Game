@@ -3,8 +3,8 @@
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 5f;
-    public float runSpeed = 10f;
+    public float walkSpeed = 1f;
+    public float runSpeed = 2f;
     public float rotationSpeed = 100f;
 
     private Rigidbody rb;
