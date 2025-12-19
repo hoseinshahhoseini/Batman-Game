@@ -6,11 +6,13 @@ public class StateManager : MonoBehaviour
 {
     private BatmanState activeState;
     private PlayerMovement movement;
+    private AudioManager audioManager;
 
     void Start()
     {
         activeState = BatmanState.Normal;
         movement = GameObject.Find("Batman").GetComponent<PlayerMovement>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -33,14 +35,17 @@ public class StateManager : MonoBehaviour
         {
             case BatmanState.Normal:
                 movement.SetNormalSpeed();
+                audioManager.StopAlertSound();
                 break;
 
             case BatmanState.Stealth:
                 movement.SetSlowSpeed();
+                audioManager.StopAlertSound();
                 break;
 
             case BatmanState.Alert:
                 movement.SetNormalSpeed();
+                audioManager.PlayAlertSound();
                 break;
         }
     }
